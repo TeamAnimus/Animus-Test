@@ -1,7 +1,5 @@
 package com.greenpumpkin.screens;
 
-import java.util.ArrayList;
-
 import box2dLight.ConeLight;
 import box2dLight.PointLight;
 import box2dLight.RayHandler;
@@ -9,7 +7,6 @@ import box2dLight.RayHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -19,10 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.greenpumpkin.game.*;
+import com.greenpumpkin.game.VirtualResolution;
 
 public class Test implements Screen {
 	private Image Image = new Image(new Texture(Gdx.files.internal("TestMap.png")));
-	private Image Animus = new Image(new Texture(Gdx.files.internal("Animus.png")));
+	private Image AnimusLogo = new Image(new Texture(Gdx.files.internal("Animus.png")));
 	private Image Protag = new Image(new Texture(Gdx.files.internal("ProtagLeft.png")));
 	private Stage stage = new Stage();
 	private OrthographicCamera camera;
@@ -44,14 +42,14 @@ public class Test implements Screen {
 		//camera creation
 		camera = new OrthographicCamera(48, 32);
 		camera.position.set(0, 16, 0);
-		camera.update();
 		camera.update(true);
+		camera.translate(-30, -30);
 		//adds background image
-		Animus.setX(135);
+		AnimusLogo.setX(135);
 		Protag.setPosition(896, 319);
 		Protag.setScale(2);
 		stage.addActor(Image);
-		stage.addActor(Animus);
+		stage.addActor(AnimusLogo);
 		stage.addActor(Protag);
 		
 		caveTheme.play();
@@ -115,7 +113,7 @@ public class Test implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		stage.getViewport().setCamera(new Camera(Animus.WIDTH, Animus.HEIGHT));
+		stage.getViewport().setCamera(new VirtualResolution(Animus.WIDTH, Animus.HEIGHT));
 	}
 
 	@Override
