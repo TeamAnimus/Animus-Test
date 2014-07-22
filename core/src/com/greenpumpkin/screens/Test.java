@@ -27,7 +27,7 @@ public class Test implements Screen {
 	private Stage stage = new Stage();
 	private OrthographicCamera camera;
 	
-	Sound caveTheme = Gdx.audio.newSound(Gdx.files.internal("music/caveTheme.mp3"));
+	Sound caveTheme = Gdx.audio.newSound(Gdx.files.internal("music/CaveTheme.mp3"));
 	
 	//Currently not being used for anything, but maybe it will be important later.
 	public boolean fadeInDone = false;
