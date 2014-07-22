@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="Tileset2" tilewidth="16" tileheight="16">
+  <image source="TileSetA.png" trans="ffe1e1" width="96" height="64"/>
+ </tileset>
+ <layer name="wall" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzjYGBg4BjFo3gUj+JRPIpH8SgexVTDABgIEsE=
+  </data>
+ </layer>
+ <layer name="lights" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQwEIDrQDiAAiZOoTxSMnRqaZMECum3ABcTL1UeoPWgBy/TIKRsEoGAWjgDAAAE6MAKk=
+  </data>
+ </layer>
+ <layer name="topwall" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwTZmBgEB7GmA+I+QmIY1ODSx9MTgCIBXHoA8lJQDE/mhxMXAiLGmR5ARziEmj60O1DxoJo9mDDuOQJ6RvFtMe8g8ANo3gUj+LBh0fLhqGBAQ3lNbQ=
+  </data>
+ </layer>
+ <layer name="Water" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRAANsWPBA2Ekre3HZRS17cZlFK3uJMZcYzAPF+NjUxuwEMC3sHLWXfvYCAEWQBPU=
+  </data>
+ </layer>
+ <layer name="ground" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh6QIIApkQvLv3E6CPFTErNG2iM7g9iALlxRI4Zo2AUkANYgJgTC6a1fYw4MLXtgWFc9lFiL7awI2QPJfYSCjtq2ovsN2rYR6y9XFS2b9Re+toLAK/2Chs=
+  </data>
+ </layer>
+</map>
