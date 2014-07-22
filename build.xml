@@ -107,7 +107,7 @@
 		<copy includeemptydirs="false" todir="core/bin">
 			<path>
 				<fileset dir="core/assets">
-					<include name="*"/>
+					<include name="**/*"/>
 				</fileset>
 			</path>
 		</copy>
