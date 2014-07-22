@@ -6,7 +6,7 @@ import box2dLight.RayHandler;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.greenpumpkin.game.*;
-import com.greenpumpkin.game.VirtualResolution;
 
 public class Test implements Screen {
 	private Image Image = new Image(new Texture(Gdx.files.internal("TestMap.png")));
@@ -25,7 +24,7 @@ public class Test implements Screen {
 	private Stage stage = new Stage();
 	private OrthographicCamera camera;
 	
-	Sound caveTheme = Gdx.audio.newSound(Gdx.files.internal("music/caveTheme.mp3"));
+	Music caveTheme = Gdx.audio.newMusic(Gdx.files.internal("music/caveTheme.mp3"));
 	
 	//Currently not being used for anything, but maybe it will be important later.
 	public boolean fadeInDone = false;
@@ -48,11 +47,13 @@ public class Test implements Screen {
 		AnimusLogo.setX(135);
 		Protag.setPosition(896, 319);
 		Protag.setScale(2);
+		Image.setScale(1.4f);
 		stage.addActor(Image);
 		stage.addActor(AnimusLogo);
 		stage.addActor(Protag);
 		
 		caveTheme.play();
+		caveTheme.setLooping(true); 
 		
 		
 		//START OF LIGHTBOX STUFF
