@@ -1,5 +1,5 @@
 *.otl
 */.temp
 desktop/bin
-class/bin
+core/bin
 .metadata
