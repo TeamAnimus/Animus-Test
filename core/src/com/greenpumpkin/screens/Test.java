@@ -9,16 +9,16 @@ import box2dLight.RayHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.greenpumpkin.game.*;
 
 public class Test implements Screen {
 	private Image Image = new Image(new Texture(Gdx.files.internal("TestMap.png")));
@@ -115,6 +115,7 @@ public class Test implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
+		stage.getViewport().setCamera(new Camera(Animus.WIDTH, Animus.HEIGHT));
 	}
 
 	@Override
