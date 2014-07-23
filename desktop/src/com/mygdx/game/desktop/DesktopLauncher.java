@@ -11,6 +11,9 @@ public class DesktopLauncher {
 		cfg.width = 1280;
 		cfg.height = 720;
 		cfg.foregroundFPS=60;
+		cfg.backgroundFPS=60;
+		cfg.vSyncEnabled=true;
+		cfg.fullscreen=true;
 		new LwjglApplication(new Animus(), cfg);
 	}
 }

@@ -10,7 +10,6 @@ public class Animus extends Game {
 	
 	@Override
 	public void create() {
-		Gdx.graphics.setVSync(true);
 		setScreen(new TestMap2());
 	}
 }

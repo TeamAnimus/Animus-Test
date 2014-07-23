@@ -134,9 +134,16 @@ public class TestMap2 implements Screen {
 		moveCamera(delta);
 		renderer.setView(mapCamera);
 		backRenderer.setView(mapCamera);
+		lightCamera.update();
+		mapCamera.update();
 		backRenderer.render();
 		renderer.render();
 		rayHandler.render();
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void moveCamera(float delta) {
@@ -150,13 +157,11 @@ public class TestMap2 implements Screen {
 		//	velocity.x=0.2f;
 		//if(velocity.x<-0.2f)
 		//	velocity.x=-0.2f;
-		else velocity.x/=1.2f;
+		velocity.x/=1.2f;
 		position.x+=velocity.x;
 		lightCamera.position.x = position.x-15;
 		rayHandler.setCombinedMatrix(lightCamera.combined);
 		mapCamera.position.x = position.x;
-		lightCamera.update();
-		mapCamera.update();
 	}
 
 	@Override
