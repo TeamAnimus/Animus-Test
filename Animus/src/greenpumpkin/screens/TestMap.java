@@ -12,20 +12,17 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class TestMap implements Screen {
 	private Stage stage = new Stage();
 	private OrthographicCamera lightCamera;
 	private OrthographicCamera mapCamera;
-	//private Viewport viewport;
 	
 	Music caveTheme = Gdx.audio.newMusic(Gdx.files.internal("music/caveTheme.mp3"));
 	
@@ -53,10 +50,10 @@ public class TestMap implements Screen {
 	public void show() {
 		//camera creation
 		lightCamera = new OrthographicCamera(32, 18);
-		lightCamera.position.set(0, 10, 0);
+		lightCamera.position.set(0, 11, 0);
 		lightCamera.update(true);
 		mapCamera = new OrthographicCamera(32, 18);
-		mapCamera.position.set(15, 10, 0);
+		mapCamera.position.set(15, 9, 0);
 		mapCamera.update(true);
 		
 		caveTheme.play();
@@ -69,7 +66,7 @@ public class TestMap implements Screen {
 		RayHandler.setGammaCorrection(true);
 		RayHandler.useDiffuseLight(true);
 		rayHandler.setAmbientLight(0.1f, 0.1f, 0.1f, 1f);
-		//rayHandler.setCulling(true);
+		rayHandler.setCulling(true);
 		rayHandler.setBlurNum(1);
 		rayHandler.setShadows(true); 
 		
@@ -89,7 +86,7 @@ public class TestMap implements Screen {
 		new PointLight(rayHandler, numRays, new Color(0f,0f,0.6f,1f), lightDistance*2, -15/1.6f, 8/1.6f);
 		//entrance
 		new ConeLight(rayHandler, numRays, new Color(0.1f,0.15f,0.05f,1f), lightDistance*8, 36/1.6f, 18/1.6f,140,55);
-		new PointLight(rayHandler, numRays, new Color(1f,1f,0.8f,1f), lightDistance, 27.1f/1.6f, 19f/1.6f);
+		new PointLight(rayHandler, numRays, new Color(1f,1f,0.8f,1f), lightDistance/2, 26.1f/1.6f, 19f/1.6f);
 		//crystals
 		//blue
 		new PointLight(rayHandler, numRays, new Color(0f,0f,0.6f,1f), lightDistance/2, -10/1.6f, 20/1.6f);
@@ -104,7 +101,7 @@ public class TestMap implements Screen {
 		
 		//END OF LIGHTBOX STUFF
 		
-		position.x=30f;
+		position.x=16f;
 	}
 	
 	@Override
@@ -131,16 +128,12 @@ public class TestMap implements Screen {
 		if ((Gdx.input.isKeyPressed(Keys.LEFT))){
 			velocity.x=-0.06f;
 		}
-		if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
+		else if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
 			velocity.x=0.06f;
 		}
-		//if(velocity.x>0.2f)
-		//	velocity.x=0.2f;
-		//if(velocity.x<-0.2f)
-		//	velocity.x=-0.2f;
-		velocity.x/=1.2f;
+		else velocity.x/=1.2f;
 		position.x+=velocity.x;
-		lightCamera.position.x = position.x-15;
+		lightCamera.position.x = position.x-17;
 		rayHandler.setCombinedMatrix(lightCamera.combined);
 		mapCamera.position.x = position.x;
 	}
