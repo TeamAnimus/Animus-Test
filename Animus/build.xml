@@ -81,7 +81,7 @@
         <antcall target="build"/>
     </target>
     <target name="Animus">
-        <java classname="com.greenpumpkin.game.Animus" failonerror="true" fork="yes">
+        <java classname="greenpumpkin.game.Animus" failonerror="true" fork="yes">
             <classpath refid="Animus.classpath"/>
         </java>
     </target>
