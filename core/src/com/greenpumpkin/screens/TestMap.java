@@ -11,7 +11,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -41,14 +44,18 @@ public class TestMap implements Screen {
 	RayHandler rayHandler; //the main object of light2d, heavily important
 	//END OF LIGHTBOX STUFF
 	
-	TiledMap tiledMap =  new TmxMapLoader().load("TestMap.tmx");
+	TiledMap tiledMap;
+	TiledMap backMap;
 	OrthogonalTiledMapRenderer renderer;
+	OrthogonalTiledMapRenderer backRenderer;
 	
 	@Override
 	public void show() {
 		//camera creation
 		camera = new OrthographicCamera(48, 32);
 		camera.position.set(25, 16, 0);
+		//camera = new OrthographicCamera(30, 20);
+		//camera.position.set(15, 10, 0);
 		camera.update(true);
 		//adds background image
 		AnimusLogo.setX(135);
@@ -76,10 +83,16 @@ public class TestMap implements Screen {
 		rayHandler.setShadows(true);
 		
 		//tiledmap
-		float unitScale = 1/12f;
-		renderer = new OrthogonalTiledMapRenderer(tiledMap, unitScale);
+		tiledMap =  new TmxMapLoader().load("TestMap.tmx");
+		backMap = new TmxMapLoader().load("TestMapBack.tmx");
+		//MapLayer background = tiledMap.getLayers().get(2);
+		//TiledMapTileLayer background = (TiledMapTileLayer)tiledMap.getLayers().get(2);
+		renderer = new OrthogonalTiledMapRenderer(tiledMap, 1/12f);
 		renderer.setMap(tiledMap);
 		renderer.setView(camera);
+		backRenderer = new OrthogonalTiledMapRenderer(backMap, 1/12f);
+		backRenderer.setMap(backMap);
+		backRenderer.setView(camera);
 		
 		//lights creation
 		//water
@@ -110,6 +123,8 @@ public class TestMap implements Screen {
 		stage.act();
 		stage.draw();
 		renderer.setView(camera);
+		backRenderer.setView(camera);
+		backRenderer.render();
 		renderer.render();
 		rayHandler.updateAndRender();
 	}
