@@ -6,7 +6,7 @@ import box2dLight.RayHandler;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -23,7 +23,7 @@ public class Test implements Screen {
 	private Stage stage = new Stage();
 	private OrthographicCamera camera;
 	
-	Sound caveTheme = Gdx.audio.newSound(Gdx.files.internal("music/CaveTheme.mp3"));
+	Music caveTheme = Gdx.audio.newMusic(Gdx.files.internal("music/caveTheme.mp3"));
 	
 	//Currently not being used for anything, but maybe it will be important later.
 	public boolean fadeInDone = false;

@@ -8,22 +8,12 @@
    eJzjYGBg4BjFo3gUj+JRPIpH8SgexVTDABgIEsE=
   </data>
  </layer>
- <layer name="lights" width="30" height="20">
+ <layer name="topwall" width="30" height="20" visible="0">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQwEIDrQDiAAiZOoTxSMnRqaZMECum3ABcTL1UeoPWgBy/TIKRsEoGAWjgDAAAE6MAKk=
+   eJztj0sKwCAMBV21m1JN7e/+J1VBIYSkQsQuxMWAZHw+440xfmD2iK3MuTtSrjgXASGX3JuxxJX5wdzB3pE5IIdztA8DpIdD8rUcx6nIJK4PdyvfbP2TxKPMte7RA+0uk8loLJEtI5179K4Veu07e//pDTnlMxQ=
   </data>
  </layer>
- <layer name="topwall" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJwTZmBgEB7GmA+I+QmIY1ODSx9MTgCIBXHoA8lJQDE/mhxMXAiLGmR5ARziEmj60O1DxoJo9mDDuOQJ6RvFtMe8g8ANo3gUj+LBh0fLhqGBAQ3lNbQ=
-  </data>
- </layer>
- <layer name="Water" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRAANsWPBA2Ekre3HZRS17cZlFK3uJMZcYzAPF+NjUxuwEMC3sHLWXfvYCAEWQBPU=
-  </data>
- </layer>
- <layer name="ground" width="30" height="20">
+ <layer name="ground" width="30" height="20" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBh6QIIApkQvLv3E6CPFTErNG2iM7g9iALlxRI4Zo2AUkANYgJgTC6a1fYw4MLXtgWFc9lFiL7awI2QPJfYSCjtq2ovsN2rYR6y9XFS2b9Re+toLAK/2Chs=
   </data>
