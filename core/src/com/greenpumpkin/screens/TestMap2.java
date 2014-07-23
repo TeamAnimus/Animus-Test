@@ -71,10 +71,11 @@ public class TestMap2 implements Screen {
 		mapCamera.update(true);
 		
 		//adds background image
-		AnimusLogo.setX(135);
-		Protag.setPosition(896, 319);
-		Protag.setScale(2);
-		position.set(30, 12);
+		
+		//AnimusLogo.setX(135);
+		//Protag.setPosition(896, 319);
+		//Protag.setScale(2);
+		//position.set(30, 12);
 		
 		caveTheme.play();
 		caveTheme.setLooping(true); 
@@ -86,17 +87,13 @@ public class TestMap2 implements Screen {
 		RayHandler.setGammaCorrection(true);
 		RayHandler.useDiffuseLight(true);
 		rayHandler.setAmbientLight(0.1f, 0.1f, 0.1f, 1f);
-		rayHandler.setCulling(true);		
-		//rayHandler.setBlur(false);
+		rayHandler.setCulling(true);
 		rayHandler.setBlurNum(1);
 		rayHandler.setShadows(true); 
-		rayHandler.setShadows(true);
 		
 		//tiledmap
 		tiledMap =  new TmxMapLoader().load("TestMap.tmx");
 		backMap = new TmxMapLoader().load("TestMapBack.tmx");
-		//MapLayer background = tiledMap.getLayers().get(2);
-		//TiledMapTileLayer background = (TiledMapTileLayer)tiledMap.getLayers().get(2);
 		renderer = new OrthogonalTiledMapRenderer(tiledMap, 1/16f);
 		renderer.setMap(tiledMap);
 		renderer.setView(mapCamera);
@@ -124,6 +121,8 @@ public class TestMap2 implements Screen {
 		new PointLight(rayHandler, numRays, new Color(0.6f,0f,0f,1f), lightDistance/2, 15.5f/1.6f, 21.5f/1.6f);
 		
 		//END OF LIGHTBOX STUFF
+		
+		position.x=30f;
 	}
 	
 	@Override
@@ -132,17 +131,25 @@ public class TestMap2 implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act();
 		stage.draw();
-		
+		moveCamera(delta);
+		renderer.setView(mapCamera);
+		backRenderer.setView(mapCamera);
+		backRenderer.render();
+		renderer.render();
+		rayHandler.render();
+	}
+
+	private void moveCamera(float delta) {
 		if ((Gdx.input.isKeyPressed(Keys.LEFT))){
-			velocity.x-=0.02f;
+			velocity.x=-4*delta;
 		}
 		if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
-			velocity.x+=0.02f;
+			velocity.x=4*delta;
 		}
-		if(velocity.x>0.2f)
-			velocity.x=0.2f;
-		if(velocity.x<-0.2f)
-			velocity.x=-0.2f;
+		//if(velocity.x>0.2f)
+		//	velocity.x=0.2f;
+		//if(velocity.x<-0.2f)
+		//	velocity.x=-0.2f;
 		else velocity.x/=1.2f;
 		position.x+=velocity.x;
 		lightCamera.position.x = position.x-15;
@@ -150,17 +157,11 @@ public class TestMap2 implements Screen {
 		mapCamera.position.x = position.x;
 		lightCamera.update();
 		mapCamera.update();
-		renderer.setView(mapCamera);
-		backRenderer.setView(mapCamera);
-		backRenderer.render();
-		renderer.render();
-		rayHandler.updateAndRender();
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		stage.getViewport().setCamera(new VirtualResolution(Animus.WIDTH, Animus.HEIGHT));
-		//viewport.update(Animus.WIDTH, Animus.HEIGHT);
 	}
 
 	@Override

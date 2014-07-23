@@ -1,6 +1,7 @@
 package com.greenpumpkin.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.greenpumpkin.screens.*;
 
 public class Animus extends Game {
@@ -9,6 +10,7 @@ public class Animus extends Game {
 	
 	@Override
 	public void create() {
+		Gdx.graphics.setVSync(true);
 		setScreen(new TestMap2());
 	}
 }

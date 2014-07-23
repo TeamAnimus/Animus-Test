@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		cfg.title = "Animus";
 		cfg.width = 1280;
 		cfg.height = 720;
-		cfg.foregroundFPS=30;
+		cfg.foregroundFPS=60;
 		new LwjglApplication(new Animus(), cfg);
 	}
 }
