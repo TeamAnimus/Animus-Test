@@ -1,4 +1,5 @@
 *.otl
 */.temp
+*.class
 Animus/bin
 .metadata
