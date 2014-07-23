@@ -22,8 +22,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.greenpumpkin.game.*;
 
-public class Test implements Screen {
-	private Image Image = new Image(new Texture(Gdx.files.internal("TestMap.png")));
+public class TestMap implements Screen {
 	private Image AnimusLogo = new Image(new Texture(Gdx.files.internal("Animus.png")));
 	private Image Protag = new Image(new Texture(Gdx.files.internal("ProtagLeft.png")));
 	private Stage stage = new Stage();
@@ -49,13 +48,12 @@ public class Test implements Screen {
 	public void show() {
 		//camera creation
 		camera = new OrthographicCamera(48, 32);
-		camera.position.set(0, 16, 0);
+		camera.position.set(25, 16, 0);
 		camera.update(true);
 		//adds background image
 		AnimusLogo.setX(135);
 		Protag.setPosition(896, 319);
 		Protag.setScale(2);
-		stage.addActor(Image);
 		stage.addActor(AnimusLogo);
 		stage.addActor(Protag);
 		
@@ -78,7 +76,7 @@ public class Test implements Screen {
 		rayHandler.setShadows(true);
 		
 		//tiledmap
-		float unitScale = 1/32f;
+		float unitScale = 1/12f;
 		renderer = new OrthogonalTiledMapRenderer(tiledMap, unitScale);
 		renderer.setMap(tiledMap);
 		renderer.setView(camera);
@@ -103,17 +101,6 @@ public class Test implements Screen {
 		new PointLight(rayHandler, numRays, new Color(0.6f,0f,0f,1f), lightDistance/2, 15.5f, 21.5f);
 		
 		//END OF LIGHTBOX STUFF
-		
-		// fades in background.
-		//pretty much useless because it doesn't fade in the lights.
-		Image.addAction(Actions.sequence(Actions.alpha(0)
-				,Actions.fadeIn(0.75f),Actions.delay(1.5f),Actions.run(new Runnable() {
-			@Override
-			public void run() {
-				fadeInDone = true;
-			}
-		})));
-		//end of fade in
 	}
 	
 	@Override
@@ -123,13 +110,13 @@ public class Test implements Screen {
 		stage.act();
 		stage.draw();
 		renderer.setView(camera);
-		//renderer.render();
+		renderer.render();
 		rayHandler.updateAndRender();
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		//stage.getViewport().setCamera(new VirtualResolution(Animus.WIDTH, Animus.HEIGHT));
+		stage.getViewport().setCamera(new VirtualResolution(Animus.WIDTH, Animus.HEIGHT));
 		//viewport.update(Animus.WIDTH, Animus.HEIGHT);
 	}
 
