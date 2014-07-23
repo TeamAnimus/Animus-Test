@@ -148,10 +148,10 @@ public class TestMap2 implements Screen {
 
 	private void moveCamera(float delta) {
 		if ((Gdx.input.isKeyPressed(Keys.LEFT))){
-			velocity.x=-0.05f;
+			velocity.x=-0.06f;
 		}
 		if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
-			velocity.x=0.05f;
+			velocity.x=0.06f;
 		}
 		//if(velocity.x>0.2f)
 		//	velocity.x=0.2f;
