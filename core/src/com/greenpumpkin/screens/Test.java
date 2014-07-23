@@ -11,10 +11,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.greenpumpkin.game.*;
 
 public class Test implements Screen {
@@ -23,6 +28,7 @@ public class Test implements Screen {
 	private Image Protag = new Image(new Texture(Gdx.files.internal("ProtagLeft.png")));
 	private Stage stage = new Stage();
 	private OrthographicCamera camera;
+	//private Viewport viewport;
 	
 	Music caveTheme = Gdx.audio.newMusic(Gdx.files.internal("music/caveTheme.mp3"));
 	
@@ -36,21 +42,24 @@ public class Test implements Screen {
 	RayHandler rayHandler; //the main object of light2d, heavily important
 	//END OF LIGHTBOX STUFF
 	
+	TiledMap tiledMap =  new TmxMapLoader().load("TestMap.tmx");
+	OrthogonalTiledMapRenderer renderer;
+	
 	@Override
 	public void show() {
 		//camera creation
 		camera = new OrthographicCamera(48, 32);
 		camera.position.set(0, 16, 0);
 		camera.update(true);
-		camera.translate(-30, -30);
 		//adds background image
 		AnimusLogo.setX(135);
 		Protag.setPosition(896, 319);
 		Protag.setScale(2);
-		Image.setScale(1.4f);
 		stage.addActor(Image);
 		stage.addActor(AnimusLogo);
 		stage.addActor(Protag);
+		
+		//viewport = new StretchViewport(1600,900, camera);
 		
 		caveTheme.play();
 		caveTheme.setLooping(true); 
@@ -65,7 +74,14 @@ public class Test implements Screen {
 		rayHandler.setCulling(true);		
 		//rayHandler.setBlur(false);
 		rayHandler.setBlurNum(1);
+		rayHandler.setShadows(true); 
 		rayHandler.setShadows(true);
+		
+		//tiledmap
+		float unitScale = 1/32f;
+		renderer = new OrthogonalTiledMapRenderer(tiledMap, unitScale);
+		renderer.setMap(tiledMap);
+		renderer.setView(camera);
 		
 		//lights creation
 		//water
@@ -98,9 +114,6 @@ public class Test implements Screen {
 			}
 		})));
 		//end of fade in
-		
-		
-		
 	}
 	
 	@Override
@@ -109,12 +122,15 @@ public class Test implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act();
 		stage.draw();
+		renderer.setView(camera);
+		//renderer.render();
 		rayHandler.updateAndRender();
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		stage.getViewport().setCamera(new VirtualResolution(Animus.WIDTH, Animus.HEIGHT));
+		//viewport.update(Animus.WIDTH, Animus.HEIGHT);
 	}
 
 	@Override
@@ -135,5 +151,6 @@ public class Test implements Screen {
 		stage.dispose();
 		caveTheme.dispose();
 		rayHandler.dispose();
+		tiledMap.dispose();
 	}
 }

@@ -8,8 +8,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Animus";
-		cfg.width = 1280;
-		cfg.height = 720;
+		cfg.width = 960;
+		cfg.height = 640;
 		new LwjglApplication(new Animus(), cfg);
 	}
 }

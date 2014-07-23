@@ -8,5 +8,6 @@ public class VirtualResolution extends OrthographicCamera{
         super(width, height);
         this.position.x=width/2;
         this.position.y=height/2;
+        this.projection.scale(2, 2, 0);
     }
 }
