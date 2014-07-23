@@ -41,7 +41,7 @@ public class TestMap2 implements Screen {
 	public boolean fadeInDone = false;
 	
 	//START OF LIGHTBOX STUFF
-	int numRays = 128; //how many rays are emitted for shadow casting
+	int numRays = 8; //how many rays are emitted for shadow casting
 	float lightDistance = 16f; // distance light goes
 	private World world; /** our box2D world, controls physics **/
 	RayHandler rayHandler; //the main object of light2d, heavily important
@@ -134,12 +134,17 @@ public class TestMap2 implements Screen {
 		stage.draw();
 		
 		if ((Gdx.input.isKeyPressed(Keys.LEFT))){
-			position.x-=0.1f;
+			velocity.x-=0.02f;
 		}
 		if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
-			position.x+=0.1f;
+			velocity.x+=0.02f;
 		}
-		
+		if(velocity.x>0.2f)
+			velocity.x=0.2f;
+		if(velocity.x<-0.2f)
+			velocity.x=-0.2f;
+		else velocity.x/=1.2f;
+		position.x+=velocity.x;
 		lightCamera.position.x = position.x-15;
 		rayHandler.setCombinedMatrix(lightCamera.combined);
 		mapCamera.position.x = position.x;
