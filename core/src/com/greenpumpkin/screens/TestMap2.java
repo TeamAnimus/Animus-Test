@@ -5,6 +5,7 @@ import box2dLight.PointLight;
 import box2dLight.RayHandler;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -50,25 +52,29 @@ public class TestMap2 implements Screen {
 	OrthogonalTiledMapRenderer renderer;
 	OrthogonalTiledMapRenderer backRenderer;
 	
+	//player related variables
+	static float MAX_VELOCITY = 10f;
+	static float JUMP_VELOCITY = 40f;
+	static float DAMPING = 0.87f;
+	private static final float GRAVITY = -2.5f;
+	final Vector2 position = new Vector2();
+	final Vector2 velocity = new Vector2();
+	
 	@Override
 	public void show() {
 		//camera creation
-		//camera = new OrthographicCamera(48, 32);
-		//camera.position.set(25, 16, 0);
-		lightCamera = new OrthographicCamera(30, 20);
+		lightCamera = new OrthographicCamera(32, 18);
 		lightCamera.position.set(0, 10, 0);
 		lightCamera.update(true);
-		mapCamera = new OrthographicCamera(30, 20);
+		mapCamera = new OrthographicCamera(32, 18);
 		mapCamera.position.set(15, 10, 0);
 		mapCamera.update(true);
+		
 		//adds background image
 		AnimusLogo.setX(135);
 		Protag.setPosition(896, 319);
 		Protag.setScale(2);
-		stage.addActor(AnimusLogo);
-		stage.addActor(Protag);
-		
-		//viewport = new StretchViewport(1600,900, camera);
+		position.set(30, 12);
 		
 		caveTheme.play();
 		caveTheme.setLooping(true); 
@@ -126,6 +132,19 @@ public class TestMap2 implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act();
 		stage.draw();
+		
+		if ((Gdx.input.isKeyPressed(Keys.LEFT))){
+			position.x-=0.1f;
+		}
+		if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
+			position.x+=0.1f;
+		}
+		
+		lightCamera.position.x = position.x-15;
+		rayHandler.setCombinedMatrix(lightCamera.combined);
+		mapCamera.position.x = position.x;
+		lightCamera.update();
+		mapCamera.update();
 		renderer.setView(mapCamera);
 		backRenderer.setView(mapCamera);
 		backRenderer.render();
