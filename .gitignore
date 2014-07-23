@@ -1,5 +1,4 @@
 *.otl
 */.temp
-desktop/bin
-core/bin
+Animus/bin
 .metadata
