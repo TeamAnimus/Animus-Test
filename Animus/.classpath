@@ -3,7 +3,32 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="assets"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/main"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/sdvsdv"/>
+	<classpathentry kind="lib" path="lib/bin/artemis.jar"/>
+	<classpathentry kind="lib" path="lib/bin/box2dlights-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-backend-lwjgl-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-box2d-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-box2d-platform-1.2.0-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-bullet-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-bullet-platform-1.2.0-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-controllers-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-controllers-desktop-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-controllers-platform-1.2.0-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-freetype-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-freetype-platform-1.2.0-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-natives.jar"/>
+	<classpathentry kind="lib" path="lib/bin/gdx-tools-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jinput-2.0.5.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jinput-platform-2.0.5-natives-linux.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jinput-platform-2.0.5-natives-osx.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jinput-platform-2.0.5-natives-windows.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jlayer-1.0.1-gdx.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jorbis-0.0.17.jar"/>
+	<classpathentry kind="lib" path="lib/bin/jutils-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/bin/lwjgl_util-2.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/bin/lwjgl-2.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/bin/lwjgl-platform-2.9.1-natives-linux.jar"/>
+	<classpathentry kind="lib" path="lib/bin/lwjgl-platform-2.9.1-natives-osx.jar"/>
+	<classpathentry kind="lib" path="lib/bin/lwjgl-platform-2.9.1-natives-windows.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
