@@ -9,6 +9,6 @@ public class Animus extends Game {
 	
 	@Override
 	public void create() {
-		setScreen(new TestMap());
+		setScreen(new TestMap2());
 	}
 }
