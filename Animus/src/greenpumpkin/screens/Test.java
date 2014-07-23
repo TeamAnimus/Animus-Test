@@ -1,4 +1,4 @@
-package com.greenpumpkin.screens;
+package greenpumpkin.screens;
 
 import box2dLight.ConeLight;
 import box2dLight.PointLight;

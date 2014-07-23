@@ -1,4 +1,4 @@
-package com.greenpumpkin.screens;
+package greenpumpkin.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;

@@ -1,4 +1,4 @@
-package com.greenpumpkin.game;
+package greenpumpkin.game;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 

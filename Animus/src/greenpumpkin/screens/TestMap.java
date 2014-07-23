@@ -1,5 +1,6 @@
-package com.greenpumpkin.screens;
+package greenpumpkin.screens;
 
+import greenpumpkin.game.*;
 import box2dLight.ConeLight;
 import box2dLight.PointLight;
 import box2dLight.RayHandler;
@@ -19,9 +20,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.greenpumpkin.game.*;
 
-public class TestMap2 implements Screen {
+public class TestMap implements Screen {
 	private Stage stage = new Stage();
 	private OrthographicCamera lightCamera;
 	private OrthographicCamera mapCamera;
@@ -89,7 +89,7 @@ public class TestMap2 implements Screen {
 		new PointLight(rayHandler, numRays, new Color(0f,0f,0.6f,1f), lightDistance*2, -15/1.6f, 8/1.6f);
 		//entrance
 		new ConeLight(rayHandler, numRays, new Color(0.1f,0.15f,0.05f,1f), lightDistance*8, 36/1.6f, 18/1.6f,140,55);
-		new PointLight(rayHandler, numRays, new Color(1f,1f,0.8f,1f), lightDistance, 26.1f/1.6f, 19f/1.6f);
+		new PointLight(rayHandler, numRays, new Color(1f,1f,0.8f,1f), lightDistance, 27.1f/1.6f, 19f/1.6f);
 		//crystals
 		//blue
 		new PointLight(rayHandler, numRays, new Color(0f,0f,0.6f,1f), lightDistance/2, -10/1.6f, 20/1.6f);

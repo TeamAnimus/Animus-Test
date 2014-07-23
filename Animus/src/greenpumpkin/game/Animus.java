@@ -1,10 +1,10 @@
-package com.greenpumpkin.game;
+package greenpumpkin.game;
+
+import greenpumpkin.screens.*;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.greenpumpkin.screens.Test;
-import com.greenpumpkin.screens.TestMap2;
 
 public class Animus extends Game {
 	public static final String TITLE="Game Project";
