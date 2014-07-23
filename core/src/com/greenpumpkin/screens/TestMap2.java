@@ -59,6 +59,7 @@ public class TestMap2 implements Screen {
 	private static final float GRAVITY = -2.5f;
 	final Vector2 position = new Vector2();
 	final Vector2 velocity = new Vector2();
+	long startTime = 0;
 	
 	@Override
 	public void show() {
@@ -87,7 +88,7 @@ public class TestMap2 implements Screen {
 		RayHandler.setGammaCorrection(true);
 		RayHandler.useDiffuseLight(true);
 		rayHandler.setAmbientLight(0.1f, 0.1f, 0.1f, 1f);
-		rayHandler.setCulling(true);
+		//rayHandler.setCulling(true);
 		rayHandler.setBlurNum(1);
 		rayHandler.setShadows(true); 
 		
@@ -127,6 +128,7 @@ public class TestMap2 implements Screen {
 	
 	@Override
 	public void render(float delta) {
+		startTime= System.currentTimeMillis();
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act();
@@ -139,19 +141,17 @@ public class TestMap2 implements Screen {
 		backRenderer.render();
 		renderer.render();
 		rayHandler.render();
-		try {
-			Thread.sleep(5);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		while(true)
+			if(((System.currentTimeMillis()-startTime)%17)<=2)
+				break;
 	}
 
 	private void moveCamera(float delta) {
 		if ((Gdx.input.isKeyPressed(Keys.LEFT))){
-			velocity.x=-4*delta;
+			velocity.x=-0.05f;
 		}
 		if ((Gdx.input.isKeyPressed(Keys.RIGHT))){
-			velocity.x=4*delta;
+			velocity.x=0.05f;
 		}
 		//if(velocity.x>0.2f)
 		//	velocity.x=0.2f;
